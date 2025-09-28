@@ -4,6 +4,7 @@ import { AppContent } from "../context/AppContext";
 
 const Header = () => {
   const { userData } = useContext(AppContent);
+  console.log(userData);
 
   return (
     <div className="flex flex-col items-center mt-20 px-4 text-center text-gray-800">
@@ -13,7 +14,7 @@ const Header = () => {
         alt=""
       />
       <h1 className="flex items-center gap-2 text-xl sm:text-3xl font-medium mb-2">
-        Hey {userData ? userData.name : "Developer"}
+        Hey {userData ? userData.username : "Developer"}
         <img src={assets.hand_wave} className="w-8 aspect-square" alt="" />
       </h1>
       <h2 className="text-3xl sm:text-5xl font-semibold mb-4">

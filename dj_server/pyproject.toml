@@ -1,0 +1,18 @@
+[project]
+name = "dj-server"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django>=5.2.6",
+    "django-cors-headers>=4.8.0",
+    "django-dotenv>=1.4.2",
+    "django-extension>=0.1.0",
+    "django-minio-storage>=0.5.8",
+    "django-redis>=6.0.0",
+    "djangorestframework>=3.16.1",
+    "djangorestframework-simplejwt>=5.5.1",
+    "minio>=7.2.16",
+    "pillow>=11.3.0",
+]

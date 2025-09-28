@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { data } from "react-router-dom";
+import cookie from "react-cookies";
 
 export const AppContent = createContext();
 
@@ -14,7 +15,10 @@ export const AppContextProvider = (props) => {
 
   const getAuthState = async () => {
     try {
-      const { data } = await axios.post(backendUrl + "/api/auth/is-auth");
+      // cookie.load("access_token");
+      const { data } = await axios.post(backendUrl + "/api/auth/is-auth", {
+        access_token: cookie.load("access_token"),
+      });
       if (data.success) {
         setIsLoggedIn(true);
         getUserData();
@@ -30,7 +34,7 @@ export const AppContextProvider = (props) => {
 
   const getUserData = async () => {
     try {
-      const { data } = await axios.get(backendUrl + "/api/user/data");
+      const { data } = await axios.get(backendUrl + "/api/auth/user-info");
       data.success ? setUserData(data.userData) : toast.error(data.message);
     } catch (error) {
       toast.error(data.message);

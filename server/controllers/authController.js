@@ -17,7 +17,7 @@ export const register = async (req, res) => {
   try {
     const existingUser = await userModel.findOne({ email });
 
-    if (existingUser) {
+    if (!existingUser) {
       return res.json({
         success: false,
         message: "User already exists",
@@ -217,8 +217,8 @@ export const sendPasswordResetOtp = async (req, res) => {
     const mailOptions = {
       from: process.env.SENDER_EMAIL,
       to: user.email,
-      subject: "Password Reset  OTP",
-      text: `Your OTP for resetting your password is ${otp}. Use this OTP to preceed with resetting your password.`,
+      subject: "Password Reset OTP",
+      text: `Your OTP for resetting your password is ${otp}. Use this OTP to precessed with resetting your password.`,
     };
     await transporter.sendMail(mailOptions);
 
